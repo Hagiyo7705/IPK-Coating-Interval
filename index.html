@@ -2,133 +2,138 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IPK - Coating Interval</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>IPK-Coating Interval</title>
+    <meta property="og:title" content="IPK-Coating Interval">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="International Paint Korea">
+    <meta name="description" content="IPK-Coating Interval">
+
     <style>
-:root {
-    --akzo-blue: #00529B;
-    --font-size-base: 16px;    /* 모바일 표준 크기 */
-    --font-size-large: 18px;
-    --font-size-title: 20px;
-}
-
-body {
-    font-family: "Malgun Gothic", sans-serif;
-    background-color: #f0f4f8;
-    margin: 0; padding: 10px; /* 외곽 여백 축소 */
-    color: #000;
-}
-
-.app-container {
-    max-width: 100%; /* 휴대폰 너비에 맞춤 */
-    margin: 0 auto;
-    background: #fff;
-    border: 2px solid var(--akzo-blue);
-    border-radius: 10px;
-}
-
-header {
-    background: var(--akzo-blue);
-    color: #fff;
-    padding: 10px; /* 헤더 높이 축소 */
-    text-align: center;
-}
-
-header h1 { margin: 0; font-size: var(--font-size-title); }
-
-/* 중앙 문구 크기 및 여백 대폭 축소 */
-.main-topic {
-    text-align: center;
-    font-size: 24px; 
-    font-weight: 900;
-    color: var(--akzo-blue);
-    margin: 10px 0; /* 위아래 간격 최소화 */
-    text-transform: uppercase;
-}
-
-.main-topic::after {
-    content: '';
-    display: block;
-    width: 280px;
-    height: 3px;
-    background-color: #d4a017;
-    margin: 5px auto 0;
-}
-
-.selection-area { padding: 10px 15px; }
-
-.form-group { margin-bottom: 12px; position: relative; } /* 간격 축소 */
-
-.form-group label {
-    display: block;
-    font-size: 14px; /* 라벨은 작게 */
-    font-weight: bold;
-    color: var(--akzo-blue);
-    margin-bottom: 4px;
-}
-
-/* 입력창 및 선택창 크기 최적화 */
-.search-input, select {
-    width: 100%;
-    padding: 10px; 
-    font-size: 16px; 
-    font-weight: bold;
-    border: 1.5px solid #ccc;
-    border-radius: 6px;
-    box-sizing: border-box;
-}
-
-/* 결과 테이블 밀도 높임 */
-.result-area { padding: 10px; border-top: 2px solid #eee; }
-
-th { 
-    background: var(--akzo-blue); 
-    color: #fff; 
-    padding: 6px 2px; 
-    font-size: 11px; /* 온도 칸 글자 축소 */
-}
-
-td { 
-    padding: 10px 2px; 
-    font-size: 14px; /* 데이터 글자 크기 조정 */
-    font-weight: bold;
-    border: 1px solid #ddd; 
-}
-
-/* 비고란 컴팩트하게 */
-.remark-box {
-    margin-top: 8px;
-    padding: 8px;
-    font-size: 13px;
-}
-        select {
-            width: 100%; padding: 15px; font-size: 20px; font-weight: bold;
-            border: 2px solid #ccc; border-radius: 10px; cursor: pointer;
+        :root {
+            --akzo-blue: #00529B;
+            --font-size-base: 15px;
         }
 
-        .result-area { padding: 25px; border-top: 5px solid #eee; min-height: 150px; }
-        .scroll-wrapper { width: 100%; overflow-x: auto; border: 2px solid var(--akzo-blue); border-radius: 10px; }
-        table { width: 100%; border-collapse: collapse; min-width: 750px; }
-        th { background: var(--akzo-blue); color: #fff; padding: 12px; font-size: 16px; }
-        td { padding: 18px 10px; font-size: 20px; font-weight: bold; border: 1px solid #ddd; text-align: center; }
-        .empty-state { text-align: center; color: #666; font-size: 18px; padding: 30px 0; }
+        body {
+            font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+            background-color: #f0f4f8;
+            margin: 0; padding: 5px;
+            color: #000;
+            overflow-x: hidden;
+        }
+
+        .app-container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: #fff;
+            border: 2px solid var(--akzo-blue);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            min-height: 98vh; /* 화면 높이에 맞춤 */
+        }
+
+        header {
+            background: var(--akzo-blue);
+            color: #fff;
+            padding: 8px;
+            text-align: center;
+        }
+
+        header h1 { margin: 0; font-size: 16px; font-weight: normal; }
+
+        .main-topic {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--akzo-blue);
+            margin: 12px 0 8px 0;
+            text-transform: uppercase;
+        }
+
+        .main-topic::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background-color: #d4a017;
+            margin: 4px auto 0;
+        }
+
+        .selection-area { padding: 10px 15px; flex-grow: 0; }
+
+        .form-group { margin-bottom: 10px; position: relative; }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            color: var(--akzo-blue);
+            margin-bottom: 3px;
+        }
+
+        .search-input, select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            border: 1.5px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%; left: 0; width: 100%;
+            background: white; border: 1px solid #ccc;
+            z-index: 100; max-height: 150px; overflow-y: auto;
+            display: none; box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .search-results div { padding: 12px; font-size: 15px; border-bottom: 1px solid #eee; }
+
+        .result-area { padding: 10px; border-top: 1px solid #eee; flex-grow: 1; }
+        
+        .scroll-wrapper { width: 100%; overflow-x: auto; border: 1.5 solid var(--akzo-blue); border-radius: 5px; }
+        
+        table { width: 100%; border-collapse: collapse; min-width: 500px; }
+        th { background: var(--akzo-blue); color: #fff; padding: 6px; font-size: 11px; }
+        td { padding: 12px 4px; font-size: 14px; font-weight: bold; border: 1px solid #ddd; text-align: center; }
+
+        .empty-state { text-align: center; color: #666; font-size: 14px; padding: 30px 0; }
+
+        .remark-box {
+            margin-top: 10px; padding: 10px; background: #fff9e6;
+            border-left: 5px solid #d4a017; font-size: 13px; font-weight: bold;
+        }
+
+        /* [핵심] 하단 고정 푸터 스타일 */
+        footer {
+            padding: 15px;
+            text-align: center;
+            background-color: #f8f9fa;
+            border-top: 1px solid #eee;
+            margin-top: auto; /* 결과값이 적어도 항상 바닥에 위치 */
+        }
     </style>
 </head>
 <body>
 
 <div class="app-container">
     <header><h1>International Paint Korea</h1></header>
-    <div class="main-topic">Coating Interval</div>
+    <div class="main-topic">IPK-Coating Interval</div>
 
     <div class="selection-area">
         <div class="form-group">
-            <label>1. Base Product (Type to Search)</label>
-            <input type="text" id="baseInput" class="search-input" placeholder="e.g. Intershield 300" oninput="searchBase()" autocomplete="off">
+            <label>1. Base Product</label>
+            <input type="text" id="baseInput" class="search-input" placeholder="제품명 일부 입력..." oninput="searchBase()" autocomplete="off">
             <div id="baseResults" class="search-results"></div>
         </div>
 
         <div class="form-group">
-            <label>2. Apply Product (Type to Search)</label>
+            <label>2. Apply Product</label>
             <input type="text" id="applyInput" class="search-input" placeholder="Select Base first" oninput="searchApply()" disabled autocomplete="off">
             <div id="applyResults" class="search-results"></div>
         </div>
@@ -136,14 +141,14 @@ td {
         <div class="form-group">
             <label>3. Kind of Work</label>
             <select id="workSelect" onchange="onWorkChange()" disabled>
-                <option value="">-- Select Apply first --</option>
+                <option value="">-- 선택 --</option>
             </select>
         </div>
 
         <div class="form-group">
             <label>4. Condition</label>
             <select id="conditionSelect" onchange="updateResults()" disabled>
-                <option value="">-- Select Work first --</option>
+                <option value="">-- 선택 --</option>
             </select>
         </div>
     </div>
@@ -151,8 +156,14 @@ td {
     <div class="result-area" id="resultArea">
         <div class="empty-state">항목을 선택하면 데이터가 표시됩니다.</div>
     </div>
-</div>
 
+    <footer>
+        <p style="margin: 0; font-size: 12px; color: #666; line-height: 1.4;">
+            Created by: <strong>이응학 (Lee Eunghak)</strong><br>
+            Email: <a href="mailto:hagiyo7705@gmail.com" style="color: var(--akzo-blue); text-decoration: none;">hagiyo7705@gmail.com</a>
+        </p>
+    </footer>
+</div>
 <script>
     // [데이터베이스: 오류 교정 및 공백 제거 버전]
     const db = [
@@ -353,81 +364,60 @@ td {
         { base: "Interline 994LT", apply: "Intergard 5263", work: "Joint / T-up", condition: "", data: ["-", "-", "24H/2D", "20H/2D", "14H/2D", "8H/2D", "6H/2D", "6H/2D", "6H/2D"], remark: "-" },
         // --- 필요한 데이터가 더 있다면 말씀해 주세요 ---
 ].map(item => ({ ...item, base: item.base.trim(), apply: item.apply.trim() }));
-
-    const baseInput = document.getElementById('baseInput');
+const baseInput = document.getElementById('baseInput');
     const applyInput = document.getElementById('applyInput');
     const workSelect = document.getElementById('workSelect');
     const conditionSelect = document.getElementById('conditionSelect');
     const area = document.getElementById('resultArea');
 
-    // 1. Base 검색 기능
     function searchBase() {
-        const val = baseInput.value.toLowerCase();
+        const val = baseInput.value.toLowerCase().trim();
         const resDiv = document.getElementById('baseResults');
         resDiv.innerHTML = '';
         if(!val) { resDiv.style.display = 'none'; return; }
-
         const filtered = [...new Set(db.map(i => i.base))].filter(b => b.toLowerCase().includes(val)).sort();
-        
         if(filtered.length > 0) {
             resDiv.style.display = 'block';
             filtered.forEach(b => {
                 const item = document.createElement('div');
                 item.textContent = b;
-                item.onclick = () => selectBase(b);
+                item.onclick = () => { baseInput.value = b; resDiv.style.display = 'none'; selectBase(b); };
                 resDiv.appendChild(item);
             });
         } else { resDiv.style.display = 'none'; }
     }
 
     function selectBase(val) {
-        baseInput.value = val;
-        document.getElementById('baseResults').style.display = 'none';
-        
-        // 초기화
         applyInput.disabled = false;
         applyInput.value = '';
-        applyInput.placeholder = "Type to search...";
         workSelect.disabled = true;
         conditionSelect.disabled = true;
         updateResults();
     }
 
-    // 2. Apply 검색 기능
     function searchApply() {
         const baseVal = baseInput.value;
-        const val = applyInput.value.toLowerCase();
+        const val = applyInput.value.toLowerCase().trim();
         const resDiv = document.getElementById('applyResults');
         resDiv.innerHTML = '';
         if(!val) { resDiv.style.display = 'none'; return; }
-
         const filtered = [...new Set(db.filter(i => i.base === baseVal).map(i => i.apply))].filter(a => a.toLowerCase().includes(val)).sort();
-
         if(filtered.length > 0) {
             resDiv.style.display = 'block';
             filtered.forEach(a => {
                 const item = document.createElement('div');
                 item.textContent = a;
-                item.onclick = () => selectApply(a);
+                item.onclick = () => { applyInput.value = a; resDiv.style.display = 'none'; selectApply(a); };
                 resDiv.appendChild(item);
             });
         } else { resDiv.style.display = 'none'; }
     }
 
     function selectApply(val) {
-        applyInput.value = val;
-        document.getElementById('applyResults').style.display = 'none';
-        
-        // Work 카테고리 로드
         const baseVal = baseInput.value;
         const works = [...new Set(db.filter(i => i.base === baseVal && i.apply === val).map(i => i.work))];
-        
-        workSelect.innerHTML = '<option value="">-- Select --</option>';
-        works.forEach(w => {
-            const opt = document.createElement('option');
-            opt.value = w; opt.textContent = w;
-            workSelect.appendChild(opt);
-        });
+        workSelect.innerHTML = '<option value="">-- 선택 --</option>';
+        works.forEach(w => { const opt = document.createElement('option'); opt.value = w; opt.textContent = w; workSelect.appendChild(opt); });
         workSelect.disabled = false;
         updateResults();
     }
@@ -436,14 +426,9 @@ td {
         const b = baseInput.value;
         const a = applyInput.value;
         const w = workSelect.value;
-
         const conditions = [...new Set(db.filter(i => i.base === b && i.apply === a && i.work === w).map(i => i.condition))];
-        conditionSelect.innerHTML = '<option value="">-- Select --</option>';
-        conditions.forEach(c => {
-            const opt = document.createElement('option');
-            opt.value = c; opt.textContent = c;
-            conditionSelect.appendChild(opt);
-        });
+        conditionSelect.innerHTML = '<option value="">-- 선택 --</option>';
+        conditions.forEach(c => { const opt = document.createElement('option'); opt.value = c; opt.textContent = c; conditionSelect.appendChild(opt); });
         conditionSelect.disabled = false;
         updateResults();
     }
@@ -455,31 +440,27 @@ td {
         const c = conditionSelect.value;
 
         if(!b || !a || !w || !c) {
-            area.innerHTML = '<div class="empty-state">모든 항목을 선택해 주세요.</div>';
+            area.innerHTML = '<div class="empty-state">항목을 선택하면 데이터가 표시됩니다.</div>';
             return;
         }
 
         const match = db.find(i => i.base === b && i.apply === a && i.work === w && i.condition === c);
         if(match) {
+            // [결과 테이블만 교체] footer는 HTML에 따로 있으므로 지워지지 않습니다.
             area.innerHTML = `
                 <div class="scroll-wrapper">
                     <table>
                         <thead><tr><th>-5℃</th><th>0℃</th><th>5℃</th><th>10℃</th><th>15℃</th><th>20℃</th><th>25℃</th><th>30℃</th><th>35℃</th></tr></thead>
                         <tbody><tr>${match.data.map(d => `<td>${d || '-'}</td>`).join('')}</tr></tbody>
                     </table>
-                    <footer style="padding: 15px; text-align: center; background-color: #f8f9fa; border-top: 1px solid #eee;">
-        <p style="margin: 0; font-size: 12px; color: #666; line-height: 1.4;">
-            Created by: <strong>이응학 (Lee Eunghak)</strong><br>
-            Email: <a href="mailto:hagiyo7705@gmail.com" style="color: var(--akzo-blue); text-decoration: none;">hagiyo7705@gmail.com</a>
-        </p>
-    </footer>
-                </div>`;
+                </div>
+                ${match.remark !== '-' ? `<div class="remark-box"><strong>Remark:</strong> ${match.remark}</div>` : ''}
+            `;
         }
     }
 
-    // 바탕 클릭 시 결과창 닫기
     document.addEventListener('click', function(e) {
-        if (!e.target.classList.contains('search-input')) {
+        if (!e.target.closest('.form-group')) {
             document.querySelectorAll('.search-results').forEach(r => r.style.display = 'none');
         }
     });
