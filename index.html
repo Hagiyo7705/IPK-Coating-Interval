@@ -56,7 +56,7 @@
         .main-topic::after {
             content: '';
             display: block;
-            width: 40px;
+            width: 260px;
             height: 3px;
             background-color: #d4a017;
             margin: 4px auto 0;
@@ -128,7 +128,7 @@
     <div class="selection-area">
         <div class="form-group">
             <label>1. Base Product</label>
-            <input type="text" id="baseInput" class="search-input" placeholder="제품명 일부 입력..." oninput="searchBase()" autocomplete="off">
+            <input type="text" id="baseInput" class="search-input" placeholder="Input product name" oninput="searchBase()" autocomplete="off">
             <div id="baseResults" class="search-results"></div>
         </div>
 
@@ -141,20 +141,20 @@
         <div class="form-group">
             <label>3. Kind of Work</label>
             <select id="workSelect" onchange="onWorkChange()" disabled>
-                <option value="">-- 선택 --</option>
+                <option value="">-- Select --</option>
             </select>
         </div>
 
         <div class="form-group">
             <label>4. Condition</label>
             <select id="conditionSelect" onchange="updateResults()" disabled>
-                <option value="">-- 선택 --</option>
+                <option value="">-- Select --</option>
             </select>
         </div>
     </div>
 
     <div class="result-area" id="resultArea">
-        <div class="empty-state">항목을 선택하면 데이터가 표시됩니다.</div>
+        <div class="empty-state">Results will be shown upon entry</div>
     </div>
 
     <footer>
@@ -416,7 +416,7 @@ const baseInput = document.getElementById('baseInput');
     function selectApply(val) {
         const baseVal = baseInput.value;
         const works = [...new Set(db.filter(i => i.base === baseVal && i.apply === val).map(i => i.work))];
-        workSelect.innerHTML = '<option value="">-- 선택 --</option>';
+        workSelect.innerHTML = '<option value="">-- Select --</option>';
         works.forEach(w => { const opt = document.createElement('option'); opt.value = w; opt.textContent = w; workSelect.appendChild(opt); });
         workSelect.disabled = false;
         updateResults();
@@ -427,7 +427,7 @@ const baseInput = document.getElementById('baseInput');
         const a = applyInput.value;
         const w = workSelect.value;
         const conditions = [...new Set(db.filter(i => i.base === b && i.apply === a && i.work === w).map(i => i.condition))];
-        conditionSelect.innerHTML = '<option value="">-- 선택 --</option>';
+        conditionSelect.innerHTML = '<option value="">-- Select --</option>';
         conditions.forEach(c => { const opt = document.createElement('option'); opt.value = c; opt.textContent = c; conditionSelect.appendChild(opt); });
         conditionSelect.disabled = false;
         updateResults();
@@ -440,7 +440,7 @@ const baseInput = document.getElementById('baseInput');
         const c = conditionSelect.value;
 
         if(!b || !a || !w || !c) {
-            area.innerHTML = '<div class="empty-state">항목을 선택하면 데이터가 표시됩니다.</div>';
+            area.innerHTML = '<div class="empty-state">Results will be shown upon entry</div>';
             return;
         }
 
