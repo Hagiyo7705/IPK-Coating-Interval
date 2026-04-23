@@ -35,7 +35,7 @@
         header {
             background: var(--akzo-blue);
             color: #fff;
-            padding: 16px;
+            padding: 10px;
             text-align: center;
         }
 
@@ -45,7 +45,7 @@
             padding: 12px 15px;
             background: #eef2f6;
             border-bottom: 1px solid #ddd;
-            margin-bottom: 10px; /* 타이틀 제거 후 여백 확보 */
+            margin-bottom: 10px;
         }
 
         .form-group { margin-bottom: 12px; position: relative; padding: 0 15px; }
@@ -121,7 +121,7 @@
 
     <div id="intervalSection" class="result-section active">
         <div class="form-group"><label>1. Base Product</label><input type="text" id="baseInput" class="search-input" placeholder="Search product..." oninput="searchBase()" autocomplete="off"><div id="baseResults" class="search-results"></div></div>
-        <div class="form-group"><label>2. Apply Product</label><input type="text" id="applyInput" class="search-input" placeholder="Select Base first" oninput="searchApply()" disabled autocomplete="off"><div id="applyResults" class="search-results"></div></div>
+        <div class="form-group"><label>2. Apply Product</label><select id="applySelect" onchange="onApplyChange()" disabled><option value="">Select Base first</option></select></div>
         <div class="form-group"><label>3. Work Category</label><select id="workSelect" onchange="onWorkChange()" disabled><option value="">-- Select --</option></select></div>
         <div class="form-group"><label>4. Select Immersion Condition</label><select id="conditionSelect" onchange="updateIntervalResults()" disabled><option value="">-- Select --</option></select></div>
         <div id="intervalResultArea" style="min-height: 100px; text-align: center; color: #999; padding-top: 20px;">Select items to see interval data</div>
@@ -419,43 +419,35 @@
     }
 
     function selectBase(val) {
-        document.getElementById('applyInput').disabled = false;
-        document.getElementById('applyInput').value = '';
+        const applySel = document.getElementById('applySelect');
+        applySel.disabled = false;
+        applySel.innerHTML = '<option value="">-- Select --</option>';
+        
+        // Base에 매칭되는 Apply 제품들 필터링하여 select에 추가
+        const applies = [...new Set(intervalDB.filter(i => i.base === val).map(i => i.apply))].sort();
+        applies.forEach(a => applySel.add(new Option(a, a)));
+
         document.getElementById('workSelect').disabled = true;
         document.getElementById('conditionSelect').disabled = true;
         document.getElementById('intervalResultArea').innerHTML = 'Select Apply Product';
     }
 
-    function searchApply() {
+    function onApplyChange() {
         const baseVal = document.getElementById('baseInput').value;
-        const val = document.getElementById('applyInput').value.toLowerCase().trim();
-        const resDiv = document.getElementById('applyResults');
-        resDiv.innerHTML = '';
-        if(!val) { resDiv.style.display = 'none'; return; }
-        const filtered = [...new Set(intervalDB.filter(i => i.base === baseVal).map(i => i.apply))].filter(a => a.toLowerCase().includes(val)).sort();
-        if(filtered.length > 0) {
-            resDiv.style.display = 'block';
-            filtered.forEach(a => {
-                const item = document.createElement('div');
-                item.textContent = a;
-                item.onclick = () => { document.getElementById('applyInput').value = a; resDiv.style.display = 'none'; selectApply(a); };
-                resDiv.appendChild(item);
-            });
-        }
-    }
+        const applyVal = document.getElementById('applySelect').value;
+        if(!applyVal) return;
 
-    function selectApply(val) {
-        const baseVal = document.getElementById('baseInput').value;
-        const works = [...new Set(intervalDB.filter(i => i.base === baseVal && i.apply === val).map(i => i.work))];
+        const works = [...new Set(intervalDB.filter(i => i.base === baseVal && i.apply === applyVal).map(i => i.work))];
         const ws = document.getElementById('workSelect');
         ws.innerHTML = '<option value="">-- Select --</option>';
         works.forEach(w => ws.add(new Option(w, w)));
         ws.disabled = false;
+        document.getElementById('conditionSelect').disabled = true;
     }
 
     function onWorkChange() {
         const b = document.getElementById('baseInput').value;
-        const a = document.getElementById('applyInput').value;
+        const a = document.getElementById('applySelect').value;
         const w = document.getElementById('workSelect').value;
         const conds = [...new Set(intervalDB.filter(i => i.base === b && i.apply === a && i.work === w).map(i => i.condition))];
         const cs = document.getElementById('conditionSelect');
@@ -466,7 +458,7 @@
 
     function updateIntervalResults() {
         const b = document.getElementById('baseInput').value;
-        const a = document.getElementById('applyInput').value;
+        const a = document.getElementById('applySelect').value;
         const w = document.getElementById('workSelect').value;
         const c = document.getElementById('conditionSelect').value;
         const match = intervalDB.find(i => i.base === b && i.apply === a && i.work === w && i.condition === c);
