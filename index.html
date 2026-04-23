@@ -5,106 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>International Paint Korea - Advanced Selector</title>
     <style>
-        :root {
-            --akzo-blue: #00529B;
-            --font-size-base: 18px;
-            --font-size-large: 22px;
-            --font-size-title: 26px;
-        }
+:root {
+    --akzo-blue: #00529B;
+    --font-size-base: 16px;    /* 모바일 표준 크기 */
+    --font-size-large: 18px;
+    --font-size-title: 20px;
+}
 
-        body {
-            font-family: "Malgun Gothic", sans-serif;
-            background-color: #f0f4f8;
-            margin: 0; padding: 20px;
-            color: #000;
-        }
+body {
+    font-family: "Malgun Gothic", sans-serif;
+    background-color: #f0f4f8;
+    margin: 0; padding: 10px; /* 외곽 여백 축소 */
+    color: #000;
+}
 
-        .app-container {
-            max-width: 650px;
-            margin: 0 auto;
-            background: #fff;
-            border: 3px solid var(--akzo-blue);
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
+.app-container {
+    max-width: 100%; /* 휴대폰 너비에 맞춤 */
+    margin: 0 auto;
+    background: #fff;
+    border: 2px solid var(--akzo-blue);
+    border-radius: 10px;
+}
 
-        header {
-            background: var(--akzo-blue);
-            color: #fff;
-            padding: 25px;
-            text-align: center;
-        }
+header {
+    background: var(--akzo-blue);
+    color: #fff;
+    padding: 10px; /* 헤더 높이 축소 */
+    text-align: center;
+}
 
-        header h1 { margin: 0; font-size: var(--font-size-title); }
+header h1 { margin: 0; font-size: var(--font-size-title); }
 
-        .main-topic {
-            text-align: center;
-            font-size: 36px;
-            font-weight: 900;
-            color: var(--akzo-blue);
-            margin: 40px 0 20px 0;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-family: "Arial Black", sans-serif;
-        }
+/* 중앙 문구 크기 및 여백 대폭 축소 */
+.main-topic {
+    text-align: center;
+    font-size: 24px; 
+    font-weight: 900;
+    color: var(--akzo-blue);
+    margin: 10px 0; /* 위아래 간격 최소화 */
+    text-transform: uppercase;
+}
 
-        .main-topic::after {
-            content: '';
-            display: block;
-            width: 450px;
-            height: 6px;
-            background-color: #d4a017;
-            margin: 15px auto 0;
-            border-radius: 3px;
-        }
+.main-topic::after {
+    content: '';
+    display: block;
+    width: 280px;
+    height: 3px;
+    background-color: #d4a017;
+    margin: 5px auto 0;
+}
 
-        .selection-area { padding: 25px; }
+.selection-area { padding: 10px 15px; }
 
-        .form-group { margin-bottom: 25px; position: relative; }
-        .form-group label {
-            display: block;
-            font-size: var(--font-size-base);
-            font-weight: bold;
-            color: var(--akzo-blue);
-            margin-bottom: 8px;
-        }
+.form-group { margin-bottom: 12px; position: relative; } /* 간격 축소 */
 
-        /* 검색 입력창 스타일 */
-        .search-input {
-            width: 100%;
-            padding: 15px;
-            font-size: 20px;
-            font-weight: bold;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            box-sizing: border-box;
-        }
+.form-group label {
+    display: block;
+    font-size: 14px; /* 라벨은 작게 */
+    font-weight: bold;
+    color: var(--akzo-blue);
+    margin-bottom: 4px;
+}
 
-        /* 검색 결과 리스트 스타일 */
-        .search-results {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: white;
-            border: 1px solid #ccc;
-            border-top: none;
-            z-index: 100;
-            max-height: 200px;
-            overflow-y: auto;
-            display: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            border-radius: 0 0 10px 10px;
-        }
+/* 입력창 및 선택창 크기 최적화 */
+.search-input, select {
+    width: 100%;
+    padding: 10px; 
+    font-size: 16px; 
+    font-weight: bold;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
 
-        .search-results div {
-            padding: 12px 15px;
-            cursor: pointer;
-            font-size: 18px;
-        }
+/* 결과 테이블 밀도 높임 */
+.result-area { padding: 10px; border-top: 2px solid #eee; }
 
-        .search-results div:hover { background-color: #f0f4f8; color: var(--akzo-blue); font-weight: bold; }
+th { 
+    background: var(--akzo-blue); 
+    color: #fff; 
+    padding: 6px 2px; 
+    font-size: 11px; /* 온도 칸 글자 축소 */
+}
 
+td { 
+    padding: 10px 2px; 
+    font-size: 14px; /* 데이터 글자 크기 조정 */
+    font-weight: bold;
+    border: 1px solid #ddd; 
+}
+
+/* 비고란 컴팩트하게 */
+.remark-box {
+    margin-top: 8px;
+    padding: 8px;
+    font-size: 13px;
+}
         select {
             width: 100%; padding: 15px; font-size: 20px; font-weight: bold;
             border: 2px solid #ccc; border-radius: 10px; cursor: pointer;
